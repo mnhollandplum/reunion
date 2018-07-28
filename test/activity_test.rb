@@ -44,5 +44,28 @@ class ActivityTest < Minitest::Test
   end
 
 
+  def test_fees_can_be_split_into_fair_shares
+    activity = Activity.new("Soccer")
+    activity.add_participant({"name" => "Todd", "fees" => 5})
+    activity.add_participant({"name" => "Molly", "fees" => 7})
+
+    assert_equal 6, activity.fair_share
+  end
+
+  def test_can_determing_balance_and_credits
+    activity = Activity.new("Soccer")
+    activity.add_participant({"name" => "Todd", "fees" => 5})
+    activity.add_participant({"name" => "Molly", "fees" => 7})
+    assert_equal 6, activity.fair_share
+    activity.balance_and_credits
+
+
+   assert_equal 1, activity.invoice["Todd"]
+   assert_equal -1, activity.invoice["Molly"]
+
+
+  end
+
+
 
 end

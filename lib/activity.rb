@@ -1,12 +1,13 @@
 require 'pry'
 class Activity
   attr_reader :name,
-              :participants
+              :participants,
+              :invoice
 
   def initialize(name)
     @name = name
     @participants = []
-    @total_fees = []
+    @invoice = {}
 
   end
 
@@ -15,13 +16,25 @@ class Activity
   end
 
   def total_fees
-
+    total_fees = []
     @participants.map do |participant|
-      @total_fees << participant["fees"]
+      total_fees << participant["fees"]
     end
-      @total_fees.sum
+      total_fees.sum
+      # binding.pry
   end
 
+  def fair_share
+    total_fees/@participants.count
+  end
+
+  def balance_and_credits
+      @participants.map do |participant|
+        @invoice[participant["name"]] = (fair_share - participant["fees"])
+      end
+      binding.pry
+      @invoice
+  end
 
 
 
