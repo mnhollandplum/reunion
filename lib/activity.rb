@@ -32,12 +32,7 @@ class Activity
       @participants.map do |participant|
         @invoice[participant["name"]] = (fair_share - participant["fees"])
       end
-      binding.pry
       @invoice
   end
-
-
-
-
 
 end
