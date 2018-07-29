@@ -22,12 +22,15 @@ class ReunionTest < Minitest::Test
   end
 
   def test_it_can_add_activities_to_roster
-    reunion = Reunion.new("Antwerp")
-    activity = Activity.new("Egg Race")
-    reunion.add_activity(activity)
+    reunion = Reunion.new("Central Park")
+     activity1 = Activity.new("Egg Race")
+     activity2 = Activity.new("Flip Cup")
+     reunion.add_activity(activity1)
+     reunion.add_activity(activity2)
 
-
-    assert_equal "Egg Race", reunion.activities[0].name
+     assert_equal "Egg Race", reunion.activities[0].name
+     assert_equal "Flip Cup", reunion.activities[1].name
   end
+
 
 end
