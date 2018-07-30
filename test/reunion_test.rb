@@ -87,5 +87,14 @@ class ReunionTest < Minitest::Test
      expected = {"Soccer"=>{"Todd"=>1, "Molly"=>-1, "Josh"=>-3, "Sara"=>4},  "Flip Cup"=>{"Jenny"=>11, "Nick" =>10}}
 
      assert_equal expected, reunion.total_amount_per_participant
-   end
+    
+     activity1 = Activity.new("Egg Race")
+     activity2 = Activity.new("Flip Cup")
+     reunion.add_activity(activity1)
+     reunion.add_activity(activity2)
+
+     assert_equal "Egg Race", reunion.activities[0].name
+     assert_equal "Flip Cup", reunion.activities[1].name
+  end
+
 end
