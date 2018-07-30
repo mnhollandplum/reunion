@@ -1,11 +1,11 @@
 require 'pry'
 class Activity
-  attr_reader :name,
+  attr_reader :activity_name,
               :participants,
               :invoice
 
   def initialize(name)
-    @name = name
+    @activity_name = name
     @participants = []
     @invoice = {}
 
@@ -21,7 +21,6 @@ class Activity
       total_fees << participant["fees"]
     end
       total_fees.sum
-      # binding.pry
   end
 
   def fair_share
