@@ -53,6 +53,7 @@ class ReunionTest < Minitest::Test
   end
 
   def test_it_can_determine_total_participants
+
     reunion = Reunion.new("Central Park")
     activity_1 = Activity.new("Soccer")
     activity_1.add_participant({"name" => "Todd", "fees" =>5})
@@ -87,9 +88,9 @@ class ReunionTest < Minitest::Test
      expected = {"Soccer"=>{"Todd"=>1, "Molly"=>-1, "Josh"=>-3, "Sara"=>4},  "Flip Cup"=>{"Jenny"=>11, "Nick" =>10}}
 
      assert_equal expected, reunion.total_amount_per_participant
-    
-     activity1 = Activity.new("Egg Race")
-     activity2 = Activity.new("Flip Cup")
+
+     activity_1 = Activity.new("Egg Race")
+     activity_2 = Activity.new("Flip Cup")
      reunion.add_activity(activity1)
      reunion.add_activity(activity2)
 

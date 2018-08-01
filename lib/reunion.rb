@@ -35,15 +35,16 @@ class Reunion
       activity.participants
     end.flatten
     @participants
-
   end
 
   def total_amount_per_participant
     @activities.map do |activity|
-     @total_invoice[activity] = activity.balance_and_credits
-     binding.pry
-   end
+     activity.balance_and_credits
+      @total_invoice[activity.activity_name] = activity.balance_and_credits
+    end
+    @total_invoice
   end
+
 
 
 
